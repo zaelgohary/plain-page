@@ -1,46 +1,45 @@
 <template>
-  
   <v-app>
-    <!-- <v-navigation-drawer v-model="sidebar" app>
-      <v-list>
-        <v-list-tile
-          v-for="item in menuItems"
-          :key="item.title"
-          :to="item.path">
-          <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>{{ item.title }}</v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer> -->
-
-    <v-toolbar app class="bg-surface">
-      <span class="hidden-sm-and-up">
+    <v-container>
+      <!-- <v-navigation-drawer v-model="sidebar" app>
+        <v-list>
+          <v-list-tile
+            v-for="item in menuItems"
+            :key="item.title"
+            :to="item.path">
+            <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>{{ item.title }}</v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer> -->
+  
+      <v-toolbar app class="bg-surface">
         <v-toolbar-side-icon @click="sidebar = !sidebar">
-          <v-img :src="baseURL + 'logo.svg'"/>
+          <v-img :src="baseURL + 'logo.svg'"  width="50px" />
         </v-toolbar-side-icon>
-      </span>
-      <v-toolbar-title>
-        <router-link to="/" style="cursor: pointer" class="text-primary">
-          <h2>{{ appTitle }}</h2>
-        </router-link>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-xs-only">
-        <v-btn
-          flat
-          v-for="item in menuItems"
-          :key="item.title"
-          :to="item.path">
-          {{ item.title }}
-        </v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
-    
-    <v-content>
-      <router-view></router-view>
-    </v-content>
+        <v-toolbar-title>
+          <router-link to="/" style="cursor: pointer" class="d-flex text-black">
+            <h2>{{ appTitle }}</h2>
+          </router-link>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items>
+          <v-btn
+            flat
+            v-for="item in menuItems"
+            :key="item.title"
+            :to="item.path">
+            {{ item.title }}
+          </v-btn>
+        </v-toolbar-items>
+      </v-toolbar>
+      
+      <v-content>
+        <router-view></router-view>
+      </v-content>
+    </v-container>
     
   </v-app>
 
@@ -60,6 +59,7 @@ const sidebar = ref(false);
 const menuItems: MenuItem[] = 
 [
   { title: 'Home', path: '/' },
+  { title: 'About', path: '/about' },
   { title: 'Sign Up', path: '/signup' },
   { title: 'Sign In', path: '/signin' }
 ]
