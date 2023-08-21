@@ -1,20 +1,6 @@
 <template>
   <v-app>
     <v-container>
-      <!-- <v-navigation-drawer v-model="sidebar" app>
-        <v-list>
-          <v-list-tile
-            v-for="item in menuItems"
-            :key="item.title"
-            :to="item.path">
-            <v-list-tile-action>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>{{ item.title }}</v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-      </v-navigation-drawer> -->
-  
       <v-toolbar app class="bg-surface">
         <v-toolbar-side-icon @click="sidebar = !sidebar">
           <v-img :src="baseURL + 'logo.svg'"  width="50px" />
@@ -67,6 +53,7 @@ const menuItems: MenuItem[] =
 [
   { title: 'Home', path: '/' },
   { title: 'About', path: '/about' },
+  { title: 'Add Post', path: '/create' },
   { title: 'Sign Up', path: '/signup' },
   { title: 'Sign In', path: '/signin' }
 ]

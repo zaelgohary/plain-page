@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from "../views/AboutView.vue"
 import SignIn from '../views/SigninView.vue'
 import SignUp from '../views/SignupView.vue'
+import AddBlog from '@/views/AddBlogView.vue'
 import NotFound from '../views/NotFoundView.vue'
 
 
@@ -18,6 +19,11 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: AboutView
+    },
+    {
+      path: '/create',
+      name: 'add-blog',
+      component: AddBlog
     },
     {
       path: '/signin',

@@ -1,7 +1,8 @@
 {
   "name": "plain-page",
   "workspaces": [
-    "packages/plain-page"
+    "packages/plain-front",
+    "packages/plain-back"
   ],
   "version": "1.0.0",
   "description": "A blog website",

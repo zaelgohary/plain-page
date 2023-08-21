@@ -1,13 +1,13 @@
 <template>
   <form>
     <v-text-field
-      v-model="state.name"
-      :error-messages="v$.name.$errors.map(e => e.$message)"
+      v-model="state.email"
+      :error-messages="v$.email.$errors.map(e => e.$message)"
       :counter="10"
-      label="Name"
+      label="Email"
       required
-      @input="v$.name.$touch"
-      @blur="v$.name.$touch"
+      @input="v$.email.$touch"
+      @blur="v$.email.$touch"
     ></v-text-field>
 
     <v-text-field
@@ -33,10 +33,10 @@
 <script setup lang="ts">
   import { reactive } from 'vue'
   import { useVuelidate } from '@vuelidate/core'
-  import { required } from '@vuelidate/validators'
+  import { email, required } from '@vuelidate/validators'
 
   const initialState = {
-    name: '',
+    email: '',
     password: '',
   }
 
@@ -44,15 +44,9 @@
     ...initialState,
   })
 
-  const items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-  ]
 
   const rules = {
-    name: { required },
+    email: { required, email },
     password: { required },
   }
 
