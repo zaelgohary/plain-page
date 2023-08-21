@@ -39,6 +39,13 @@
       <v-content>
         <router-view></router-view>
       </v-content>
+      <v-footer>
+        <v-row justify="center" no-gutters>
+          <v-col class="text-center" cols="12">
+            {{ new Date().getFullYear() }} — <strong>Plain Page </strong>
+          </v-col>
+        </v-row>
+      </v-footer>
     </v-container>
     
   </v-app>
@@ -69,5 +76,11 @@ const menuItems: MenuItem[] =
 <style scoped>
   .v-toolbar-title {
     line-height: inherit !important;
+  }
+  .v-footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
   }
 </style>
