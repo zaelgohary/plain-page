@@ -1,8 +1,8 @@
 {
   "name": "plain-page",
+  "private": true,
   "workspaces": [
-    "packages/plain-front",
-    "packages/plain-back"
+    "packages/*"
   ],
   "version": "1.0.0",
   "description": "A blog website",
