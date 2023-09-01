@@ -1,0 +1,557 @@
+{
+	"info": {
+		"_postman_id": "05b42d70-2c52-4a3a-bc4d-5e30b87a7631",
+		"name": "Blogging System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26813410"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "passwordConfirmation",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "name",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/users",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Session",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/sessions",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const newAccessToken = responseHeaders[\"x-access-token\"];",
+									"",
+									"if(newAccessToken){",
+									"    console.log(\"Setting new access token.\");",
+									"    postman.setEnvironmentVariable(\"accessToken\", newAccessToken);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-refresh",
+								"value": "{{refreshToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/api/sessions",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const newAccessToken = responseHeaders[\"x-access-token\"];",
+									"",
+									"if(newAccessToken){",
+									"    console.log(\"Setting new access token.\");",
+									"    postman.setEnvironmentVariable(\"accessToken\", newAccessToken);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-refresh",
+								"value": "{{refreshToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/api/sessions",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blogs",
+			"item": [
+				{
+					"name": "Create Blog",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"blogId\", jsonData.blogId);",
+									"",
+									"",
+									"const newAccessToken = responseHeaders[\"x-access-token\"];",
+									"if(newAccessToken){",
+									"    console.log(\"Setting new access token.\")",
+									"    postman,setEnvironmentVariable(\"accessToken\", newAccessToken);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-refresh",
+								"value": "{{refreshToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "How to learn a new language 101",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "John Doe",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat ratione voluptatum debitis tenetur sed quisquam facere mollitia non eligendi ipsa maiores nobis officia natus qui eaque minus explicabo, dicta voluptatibus dolor eum. Vero eaque impedit ullam veniam sunt beatae debitis doloremque illo aspernatur, voluptates culpa earum non placeat! Tempora quo laboriosam, dolore reiciendis magni tenetur minus eaque, ipsam explicabo doloremque architecto, nihil illo illum eligendi fugiat sequi voluptatem eius placeat ad. Pariatur dicta quaerat non placeat dolorum maiores unde nesciunt, quas ratione assumenda distinctio voluptatem ipsa quod consequuntur cupiditate, dolor enim sint facilis ad consequatur quae veniam officia. Accusamus, soluta!",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/blogs",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"blogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Blog",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat ratione voluptatum debitis tenetur sed quisquam facere mollitia non eligendi ipsa maiores nobis officia natus qui eaque minus explicabo, dicta voluptatibus dolor eum. Vero eaque impedit ullam veniam sunt beatae debitis doloremque illo aspernatur, voluptates culpa earum non placeat! Tempora quo laboriosam, dolore reiciendis magni tenetur minus eaque, ipsam explicabo doloremque architecto, nihil illo illum eligendi fugiat sequi voluptatem eius placeat ad. Pariatur dicta quaerat non placeat dolorum maiores unde nesciunt, quas ratione assumenda distinctio voluptatem ipsa quod consequuntur cupiditate, dolor enim sint facilis ad consequatur quae veniam officia. Accusamus, soluta!",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/blogs/{{blogId}}",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"blogs",
+								"{{blogId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Blog",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const newAccessToken = responseHeaders[\"x-access-token\"];",
+									"",
+									"if(newAccessToken){",
+									"    console.log(\"Setting new token\");",
+									"    postman.setEnvironmentVariable(\"accessToken\", newAccessToken);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-refresh",
+								"value": "{{refreshToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat ratione voluptatum debitis tenetur sed quisquam facere mollitia non eligendi ipsa maiores nobis officia natus qui eaque minus explicabo, dicta voluptatibus dolor eum. Vero eaque impedit ullam veniam sunt beatae debitis doloremque illo aspernatur, voluptates culpa earum non placeat! Tempora quo laboriosam, dolore reiciendis magni tenetur minus eaque, ipsam explicabo doloremque architecto, nihil illo illum eligendi fugiat sequi voluptatem eius placeat ad. Pariatur dicta quaerat non placeat dolorum maiores unde nesciunt, quas ratione assumenda distinctio voluptatem ipsa quod consequuntur cupiditate, dolor enim sint facilis ad consequatur quae veniam officia. Accusamus, soluta!",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "John Doe",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "https://cdn.vuetifyjs.com/images/cards/sunshine.jpg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/blogs/{{blogId}}",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"blogs",
+								"{{blogId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Blog",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const newAccessToken = requestHeaders[\"x-access-token\"];",
+									"",
+									"if(newAccessToken){",
+									"    console.log(\"Setting new access token\");",
+									"    postman.setEnvironmentVariable(\"accessToken\", newAccessToken)",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-refresh",
+								"value": "{{refreshToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/api/blogs/{{blogId}}",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"blogs",
+								"{{blogId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Metrics",
+			"item": [
+				{
+					"name": "Get Metrics",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9100/metrics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9100",
+							"path": [
+								"metrics"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "accessToken",
+			"value": "will be set after creating one"
+		},
+		{
+			"key": "endpoint",
+			"value": "will be changed once endpoint is created"
+		},
+		{
+			"key": "refreshToken",
+			"value": "<refresh token will be set when you create a session>"
+		},
+		{
+			"key": "blogId",
+			"value": "<will be added once a blog is created>"
+		},
+		{
+			"key": "email",
+			"value": "test@example.com",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "Password456!",
+			"type": "string"
+		},
+		{
+			"key": "name",
+			"value": "John Doe",
+			"type": "string"
+		}
+	]
+}

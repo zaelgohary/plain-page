@@ -1,1 +1,3 @@
 node_modules/
+packages/plain-back/build
+packages/*/*.log

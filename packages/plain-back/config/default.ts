@@ -1,4 +1,5 @@
 export default{
   port: 1337,
-  dbUri: "mongodb://localhost:27017/rest-api-tutorial"
+  dbUri: "mongodb+srv://zaelgohary:String123@cluster0.wh7nu.mongodb.net/?retryWrites=true&w=majority",
+  saltWorkFactor: 10,
 }
