@@ -1,7 +1,7 @@
 import { TypeOf, object, string } from "zod"
 
 
-export const createUseSchema = object({
+export const createUserSchema = object({
   body: object({
     name: string({
       required_error: "Name is required."
@@ -21,4 +21,4 @@ export const createUseSchema = object({
   })
 })
 
-export type createUserInput = TypeOf<typeof createUseSchema>
+export type createUserInput = TypeOf<typeof createUserSchema>
